@@ -14,4 +14,8 @@ public class ProductRepository {
             new Drink(5, "코카콜라", 1000, 200, true),
             new Drink(6, "제로콜라", 1000, 0, true),
     };
+    // 모든 메뉴 리턴해주는 getAllProducts
+    public  Product[] getAllProducts(){
+        return products;
+    }
 }
