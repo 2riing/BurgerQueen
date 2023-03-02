@@ -11,9 +11,13 @@ public class OrderApp {
         ProductRepository productRepository = new ProductRepository();
         Product[] products = productRepository.getAllProducts();
         Menu menu = new Menu(products);
+        Cart cart = new Cart();
 
         System.out.println("\uD83C\uDF54 BurgerQueen Order Service");
         menu.printMenu();
-        String input = scanner.nextLine();
+        int input = scanner.nextInt();
+        if (input == 0) {
+            cart.printCart();
+        }
     }
 }
