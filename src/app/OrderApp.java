@@ -11,13 +11,17 @@ public class OrderApp {
         ProductRepository productRepository = new ProductRepository();
         Product[] products = productRepository.getAllProducts();
         Menu menu = new Menu(products);
-        Cart cart = new Cart();
+        Cart cart = new Cart(productRepository, menu);
 
         System.out.println("\uD83C\uDF54 BurgerQueen Order Service");
         menu.printMenu();
-        int input = scanner.nextInt();
-        if (input == 0) {
+        String input = scanner.nextLine();
+        if (input.equals("+")) {
+
+        } else if (input.equals("0")) {
             cart.printCart();
+        } else {
+            cart.addToCart(Integer.parseInt(input));
         }
     }
 }

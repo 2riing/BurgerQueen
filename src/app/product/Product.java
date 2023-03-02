@@ -15,6 +15,12 @@ public class Product {
         this.kcal = kcal;
     }
 
+    public  Product(String name, int price, int kcal){
+        this.name = name;
+        this.price = price;
+        this.kcal = kcal;
+    }
+
     // id getter
     public int getId() {
         return id;

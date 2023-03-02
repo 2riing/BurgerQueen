@@ -3,7 +3,7 @@ package app.product.subproduct;
 import app.product.Product;
 
 public class Hamburger extends Product {
-    private boolean isBurgerSet;
+    private boolean isBurgerSet = false;
     private int burgerSetPrice;
 
     public Hamburger(int id, String name, int price, int kcal, boolean isBurgerSet, int burgerSetPrice){

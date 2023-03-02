@@ -3,8 +3,8 @@ package app.product.subproduct;
 import app.product.Product;
 
 public class Drink extends Product {
-    private boolean hasStraw;
-
+    private boolean hasStraw = true;
+    public Drink(){}
     public Drink(int id, String name, int price, int kcal, boolean hasStraw){
         super(id, name, price, kcal);
         this.hasStraw = hasStraw;

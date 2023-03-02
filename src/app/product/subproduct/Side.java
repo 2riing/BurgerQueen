@@ -4,7 +4,7 @@ import app.product.Product;
 
 public class Side extends Product {
     private int ketchup; // int인거 보면 캐첩 개수?
-
+    public Side(){}
     public Side(int id, String name, int price, int kcal, int ketchup){
         super(id, name, price, kcal);
         this.ketchup = ketchup;
