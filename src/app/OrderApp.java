@@ -14,14 +14,19 @@ public class OrderApp {
         Cart cart = new Cart(productRepository, menu);
 
         System.out.println("\uD83C\uDF54 BurgerQueen Order Service");
-        menu.printMenu();
-        String input = scanner.nextLine();
-        if (input.equals("+")) {
-
-        } else if (input.equals("0")) {
-            cart.printCart();
-        } else {
-            cart.addToCart(Integer.parseInt(input));
+        while(true) {
+            menu.printMenu();
+            String input = scanner.nextLine();
+            if (input.equals("+")){
+                // 주문내역 출력
+                break;
+            } else {
+                int num = Integer.parseInt(input);
+                if (num == 0) cart.printCart();
+                else if (0 < num && num < products.length + 1) {
+                    cart.addToCart(num);
+                }
+            }
         }
     }
 }

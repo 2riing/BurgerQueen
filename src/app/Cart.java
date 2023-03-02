@@ -18,12 +18,33 @@ public class Cart {
 
     public Cart(ProductRepository productRepository, Menu menu) {
         this.productRepository = productRepository;
+        this.menu = menu;
     }
     public void addToCart(int productId) {
         Product product = productRepository.findById(productId);
         // items에 추가 ! 하기 전에 옵션 골라야함
         chooseOption(product);
+
+//        if (product instanceof Hamburger) {
+//            Hamburger hamburger = (Hamburger) product;
+//            if(hamburger.isBurgerSet()) product = composeSet(hamburger);
+//        }
+
+        Product newProduct;
+        if (product instanceof Hamburger) newProduct = new Hamburger((Hamburger) product);
+        else if (product instanceof Side) newProduct = new Side((Side) product);
+        else if (product instanceof Drink) newProduct = new Drink((Drink) product);
+        else newProduct = product;
+
+        Product[] newItems = new Product[items.length + 1 ];
+        System.arraycopy(items, 0, newItems, 0, items.length);
+        newItems[newItems.length - 1] = newProduct;
+        items = newItems;
+
+        System.out.printf("[📣] %s를(을) 장바구니에 담았습니다.\n", product.getName());
     }
+
+
 
     private void chooseOption(Product product) {
         String input;
@@ -56,20 +77,22 @@ public class Cart {
 
         int sideInput = scanner.nextInt();
         Side side = (Side) productRepository.findById(sideInput);
-        chooseOption(side);
+        Side newSide = new Side(side);
+        chooseOption(newSide);
 
         System.out.println("음료를 골라주세요");
         menu.printDrinks(false);
 
         int drinkInput = scanner.nextInt();
         Drink drink = (Drink) productRepository.findById(drinkInput);
-        chooseOption(drink);
+        Drink newDrink = new Drink(drink);
+        chooseOption(newDrink);
 
         String name = hamburger.getName() + "세트";
         int price = hamburger.getBurgerSetPrice();
         int kcal = hamburger.getKcal() + side.getKcal() + + drink.getKcal();
 
-        return new BurgerSet(name, price, kcal, hamburger, side, drink);
+        return new BurgerSet(name, price, kcal, hamburger, newSide, newDrink);
     }
 
     public void printCart() {
