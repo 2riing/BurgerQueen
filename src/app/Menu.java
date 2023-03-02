@@ -35,7 +35,6 @@ public class Menu {
                 printEachMenu(product, printPrice);
             }
         }
-        System.out.println();
     }
     public void printSides(boolean printPrice){
         System.out.println("🍟 사이드");
@@ -44,7 +43,6 @@ public class Menu {
                 printEachMenu(product, printPrice);
             }
         }
-        System.out.println();
     }
 
     public void printDrinks(boolean printPrice){
@@ -54,7 +52,6 @@ public class Menu {
                 printEachMenu(product, printPrice);
             }
         }
-        System.out.println();
     }
 
     private static void printEachMenu(Product product, boolean printPrice) {

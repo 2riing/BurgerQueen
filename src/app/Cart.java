@@ -10,7 +10,7 @@ import app.product.subproduct.Side;
 import java.util.Scanner;
 
 public class Cart {
-    private Product[] items = new Product[0];
+    public Product[] items = new Product[0];
     private Scanner scanner = new Scanner(System.in);
 
     private ProductRepository productRepository;
@@ -25,10 +25,10 @@ public class Cart {
         // items에 추가 ! 하기 전에 옵션 골라야함
         chooseOption(product);
 
-//        if (product instanceof Hamburger) {
-//            Hamburger hamburger = (Hamburger) product;
-//            if(hamburger.isBurgerSet()) product = composeSet(hamburger);
-//        }
+        if (product instanceof Hamburger) {
+            Hamburger hamburger = (Hamburger) product;
+            if(hamburger.isBurgerSet()) product = composeSet(hamburger);
+        }
 
         Product newProduct;
         if (product instanceof Hamburger) newProduct = new Hamburger((Hamburger) product);
@@ -56,7 +56,6 @@ public class Cart {
             int HamburgerNum = scanner.nextInt();
             if (HamburgerNum == 2) {
                 ((Hamburger) product).setIsBurgerSet(true);
-                composeSet((Hamburger) product);
             };
         }
         else if (product instanceof Side) {
@@ -115,14 +114,15 @@ public class Cart {
         }
         return totalPrices;
     }
-    private void printCartItemDetail(){
+    public void printCartItemDetail(){
         System.out.println("🧺 장바구니");
         System.out.println("-".repeat(60));
 
         for (Product item : items) {
             // Product로 업캐스팅 되어있으니, BurgerSet 멤버를 사용할 수 있도록 다운캐스팅
-            BurgerSet burgerSet = (BurgerSet) item;
+
             if (item instanceof BurgerSet){
+                BurgerSet burgerSet = (BurgerSet) item;
                 System.out.printf(
                         "%s %5d원 (%s(케첩 %d개), %s(빨대 %s))\n",
                         item.getName(), item.getPrice(),
@@ -149,6 +149,7 @@ public class Cart {
             }
         }
 
+        System.out.println();
         System.out.println("-".repeat(60));
         System.out.printf("합계 : %d원\n", calculateTotalPrice());
 
