@@ -77,6 +77,7 @@ public class Cart {
 
         int sideInput = scanner.nextInt();
         Side side = (Side) productRepository.findById(sideInput);
+        // Side 타입일 때만 출력
         Side newSide = new Side(side);
         chooseOption(newSide);
 
@@ -84,6 +85,7 @@ public class Cart {
         menu.printDrinks(false);
 
         int drinkInput = scanner.nextInt();
+        // Drink 타입일 때만 출력
         Drink drink = (Drink) productRepository.findById(drinkInput);
         Drink newDrink = new Drink(drink);
         chooseOption(newDrink);
