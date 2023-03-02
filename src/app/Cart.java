@@ -149,7 +149,6 @@ public class Cart {
             }
         }
 
-        System.out.println();
         System.out.println("-".repeat(60));
         System.out.printf("합계 : %d원\n", calculateTotalPrice());
 

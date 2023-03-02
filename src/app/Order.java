@@ -4,10 +4,12 @@ import app.product.Product;
 
 public class Order {
     private Cart cart;
-    Product[] items = cart.items;
+    Product[] items;
+
     public Order(){};
     public Order(Cart cart){
         this.cart = cart;
+        this.items = cart.items;
     };
 
     private int makeTotal(){
